@@ -1,0 +1,93 @@
+<head>
+    <meta charset="UTF-8">
+    <title>GitHub API - Globo.com</title>
+	<link rel="stylesheet" href="css/default.min.css">
+</head>
+<body>
+	<section id="container" class="container row"></section>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/reactjsx.min.js"></script>
+	<script src="js/github.min.js"></script>
+	<script type="text/jsx">
+        /**
+        * @jsx React.DOM
+        */
+        var ProjectBox = React.createClass({
+			render: function () {
+                return (
+					<div class="projects">
+						<aside class="sidebar">
+							<HeaderTitle />
+							<ProjectList />							
+						</aside>
+						<MainBox />
+					</div>
+                );
+            }
+        });
+		
+		var HeaderTitle = React.createClass({
+            render: function () {
+                return (
+                    <h1 class="title"><a href="index.html">projetos</a></h1>
+                );
+            }
+        });
+		
+		var ProjectList = React.createClass({
+            render: function () {
+                return (
+                    <nav>
+						<ul id="repositories" class="list-v projects-list"></ul>
+					</nav>
+                );
+            }
+        });
+
+        var MainBox = React.createClass({
+            render: function () {
+                return (
+                    <section class="main">
+						<ListStats />
+						<CommitsList />
+						<BtnShowMore />
+					</section>
+                );
+            }
+        });
+		
+		var ListStats = React.createClass({
+            render: function () {
+                return (
+                    <ul class="list-h stats">
+						<li class="list-item" id="stars"></li>
+						<li class="list-item" id="forks"></li>
+						<li class="list-item" id="contribs"></li>
+					</ul>
+                );
+            }
+        });
+		
+		var CommitsList = React.createClass({
+            render: function () {
+                return (
+                    <ul id="commits" class="list-v commits-list"></ul>
+                );
+            }
+        });
+		
+		var BtnShowMore = React.createClass({
+            render: function () {
+                return (
+                    <button id="showMore" class="show-more">Carregar mais</button>
+                );
+            }
+        });
+
+        React.renderComponent(
+            <ProjectBox />,
+            document.getElementById('container')
+        );
+	</script>
+</body>
+</html>
